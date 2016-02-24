@@ -1,6 +1,6 @@
-set nocompatible              " be iMproved, required
-set modelines=0
-filetype off                  " required
+set nocompatible        " be iMproved, required
+set modelines=0         " set the number of modelines Vim parses, when it starts, to zero
+filetype off            " required
 
 " NEOBUNDLE
 set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -37,9 +37,9 @@ let g:delimitMate_expand_cr = 1
 
 " allow backspacing over everything in insert mode
 if has("vms")
-    set nobackup          " do not keep a backup file, use versions instead
+    set nobackup        " do not keep a backup file, use versions instead
 else
-    set backup            " keep a backup file
+    set backup          " keep a backup file
 endif
 
 " In many terminal emulators the mouse works just fine, thus enable it.
@@ -109,16 +109,17 @@ let g:EclimCompletionMethod='omnifunc'
 colorscheme jellybeans
 "colorscheme hybrid
 
-set tabstop=4               " insert n spaces for a tab
-set shiftwidth=4            " number of space characters inserted for indentation
-set softtabstop=4           " number of space characters tab inserts in insert mode
-set expandtab               " insert space characters whenever the tab key is pressed
+set tabstop=4           " insert n spaces for a tab
+set shiftwidth=4        " number of space characters inserted for indentation
+set softtabstop=4       " number of space characters tab inserts in insert mode
+set expandtab           " insert space characters whenever the tab key is pressed
+set scrolloff=3         " number of context lines displayed above and below the cursor
 
-set encoding=utf-8          " The encoding displayed
-set scrolloff=3             " number of context lines displayed above and below the cursor
-set showmode                " Show the mode (insert, visual, normal)
-set showcmd                 " show you information about the current command going on 
-set hidden                  " hide buffer when it is abandoned
+set list                    " display whitespace 
+set listchars=tab:▸\ ,eol:¬ " customize the way whitespace characters are shown
+
+set encoding=utf-8      " The encoding displayed
+set hidden              " hide buffer when it is abandoned
 
 set wildmenu                " enable a menu at the bottom of the vim/gvim window
 set wildmode=list:longest   " 1. tab - a list of completions will be shown and the command
@@ -126,50 +127,49 @@ set wildmode=list:longest   " 1. tab - a list of completions will be shown and t
                             " 2. tab - the wildmenu will show up with all the completions
                                 " that were listed before. 
 
-set visualbell              " flash screen instead of sounding a beep
-set cursorline              " Highlight current line
-set ruler                   " display ruler on the status line at the bottom 
-                                " line ,column ,virtual column, relative position
+set visualbell          " flash screen instead of sounding a beep
+
+set cursorline          " Highlight current line
+set colorcolumn=85      " highlight specific column
+
+set showmode            " Show mode (insert, visual, normal)
+set showcmd             " show information about the current command going on 
+set laststatus=2        " always displaying status line 
+set ruler               " display ruler on the status line at the bottom 
+                        " line ,column ,virtual column, relative position
 
 set backspace=indent,eol,start  " Influences the working of backspace (bs)
-                            " indent - allow backspacing over autoindent
-                            " eol - allow backspacing over line breaks (join lines)
-                            " start - allow backspacing over the start of insert; 
-                            " CTRL-W and CTRL-U stop once at the start of insert.
+                                " indent - allow backspacing over autoindent
+                                " eol - allow backspacing over line breaks (join lines)
+                                " start - allow backspacing over the start of insert; 
+                                " CTRL-W and CTRL-U stop once at the start of insert.
 
-set laststatus=2            " always displaying status line 
-set relativenumber          " display line numbers relative to the line with the cursor
-set number                  " display line number
+set relativenumber      " display line numbers relative to the line with the cursor
+set number              " display line number
 
-set undofile                " persistent undo 
-set history=50              " keep 50 lines of command line history
+set undofile            " persistent undo 
+set history=50          " keep 50 lines of command line history
 
-" SEARCH
-set incsearch               " do incremental searching
-set showmatch               " briefly jump to the opening bracket/paren/brace 
-                                " when you type the closing bracket/paren/brace,
-set hlsearch                " highlight all search matches
-set ignorecase              " searching is not case sensitive
-set smartcase               " When 'ignorecase' and 'smartcase' are on, if a pattern contains an 
-                            " uppercase letter, it's case sensitive, otherwise it's not
+set incsearch           " do incremental searching
+set hlsearch            " highlight all search matches
+set ignorecase          " searching is not case sensitive
+set smartcase           " When 'ignorecase' and 'smartcase' are on, if a pattern contains an 
+                        " uppercase letter, it's case sensitive, otherwise it's not
+set showmatch           " briefly jump to the opening bracket/paren/brace 
+                        " when you type the closing bracket/paren/brace,
 
-set gdefault                " When on, the ":substitute" flag 'g' is default on. All matches in a line
-                            " are substituted instead of one. When a 'g' flag is given to a ":substitute"
-                            " command, this will toggle the substitution of all or one match
+set gdefault            " When on, the ":substitute" flag 'g' is default on. All matches in a line
+                        " are substituted instead of one. When a 'g' flag is given to a ":substitute"
+                        " command, this will toggle the substitution of all or one match
 
-set wrap                    " lines longer than the window width will wrap and continue on the next line
-set textwidth=78            " wrap text automatically
-set formatoptions=qrn1      " automatic formatting
-                                " q - allow 'gq' to work
-                                    " gp - reformat paragraph
-                                " r - (in mail) comment leader after
-                                " n - numbered lists
-                                " 1 - single letter words on next line
-
-set colorcolumn=85          " highlight specific column
-
-set list                    " display whitespace 
-set listchars=tab:▸\ ,eol:¬ " customize the way whitespace characters are shown
+set wrap                " lines longer than the window width will wrap and continue on the next line
+set textwidth=78        " wrap text automatically
+set formatoptions=qrn1  " automatic formatting
+                            " q - allow 'gq' to work
+                                " gp - reformat paragraph
+                            " r - (in mail) comment leader after
+                            " n - numbered lists
+                            " 1 - single letter words on next line
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -178,7 +178,7 @@ map Q gq
 nnoremap <tab> %
 vnoremap <tab> %
 
-inoremap jj <ESC>
+inoremap jj <ESC>       " remap <ESC> to jj when in INSERT mode
 
 " open a new vertical split and switch over to it. If not changed: <leader> = \
 nnoremap <leader>w <C-w>v<C-w>l
