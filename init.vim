@@ -183,6 +183,9 @@ inoremap jj <ESC>       " remap <ESC> to jj when in INSERT mode
 " open a new vertical split and switch over to it. If not changed: <leader> = \
 nnoremap <leader>w <C-w>v<C-w>l
 
+" switch Off The Current Search
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
 " map <C-[h/j/k/l]> to the commands needed to move around splits
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
